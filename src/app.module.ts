@@ -3,6 +3,8 @@ import { TasksModule } from './tasks/tasks.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModuleOptions, TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtGuard } from './auth/jwt.guard';
 
 const typeOrmModuleOption: TypeOrmModuleOptions = {
   type: 'postgres',
@@ -23,6 +25,11 @@ const typeOrmModuleOption: TypeOrmModuleOptions = {
     AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtGuard,
+    },
+  ],
 })
 export class AppModule {}
