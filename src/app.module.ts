@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModuleOptions, TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 const typeOrmModuleOption: TypeOrmModuleOptions = {
   type: 'postgres',
@@ -19,6 +20,7 @@ const typeOrmModuleOption: TypeOrmModuleOptions = {
     TypeOrmModule.forRoot(typeOrmModuleOption),
     TasksModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
