@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+  db_taks_management:
+    image: 'postgres'
+    container_name: 'db_taks_management'
+    ports:
+      - '54321:5432'
+    environment:
+      TZ: 'Asia/Jakarta'
+      PGTZ: 'Asia/Jakarta'
+      POSTGRES_PASSWORD: YXc1cWRYUT0
+      POSTGRES_USER: dG9iaWw
+      POSTGRES_DB: Z2F0ZXdheQ
+      PGDATA: /data/postgres
+    volumes:
+      - db-task-management:/data/postgres
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: 'adminer_taks_management'
+    restart: always
+    ports:
+      - 18081:8080
+
+volumes:
+  db-task-management:
