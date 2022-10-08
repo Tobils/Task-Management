@@ -6,7 +6,7 @@ import {
   Matches,
 } from 'class-validator';
 
-export class CreateUserDto {
+export class SignInDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(4)
@@ -17,6 +17,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(20)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'password is to weak !',
+  })
   password: string;
 }
