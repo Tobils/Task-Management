@@ -45,6 +45,7 @@ export class UserService {
       return await this.userRepository
         .createQueryBuilder('user')
         .where('user.username = :username', { username })
+        .leftJoinAndSelect('user.task', 'task')
         .getOne();
     } catch (error) {
       throw new HttpException(

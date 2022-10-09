@@ -1,3 +1,4 @@
+import { User } from 'src/user/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,7 +7,10 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   Unique,
+  ManyToOne,
 } from 'typeorm';
+
+import { Exclude } from 'class-transformer';
 
 export enum TaskStatus {
   OPEN = 'OPEN',
@@ -30,6 +34,12 @@ export class Task {
     default: TaskStatus.OPEN,
   })
   status: TaskStatus;
+
+  @ManyToOne(() => User, (user) => user.task, { eager: false })
+  @Exclude({
+    toPlainOnly: true,
+  }) /** whenever return plain text or json response, it will be excluded */
+  user: User;
 
   @CreateDateColumn({
     type: 'timestamp',

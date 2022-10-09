@@ -1,3 +1,4 @@
+import { Task } from 'src/tasks/entities/task.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,6 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 @Entity()
 @Unique(['username'])
@@ -18,6 +20,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Task, (task) => task.user, { eager: true })
+  task: Task[];
 
   @CreateDateColumn({
     type: 'timestamp',
