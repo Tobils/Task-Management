@@ -1,18 +1,11 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-task-filter.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task, TaskStatus } from './entities/task.entity';
 import { Repository } from 'typeorm';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class TasksService {

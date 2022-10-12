@@ -33,6 +33,31 @@ Learn fundamental Nestjs with [Ariel Weinberger](https://www.udemy.com/user/arie
 $ npm install
 ```
 
+## Unit Test Example
+
+```ts
+function addNumber(num1, num2) {
+  return num1 + num2;
+}
+
+describe('Example test', () => {
+  it('equals true', () => {
+    expect(true).toEqual(true);
+    expect('suhada').toEqual('suhada');
+  });
+});
+
+/**
+ * unit test sangat membantu dalam menjaga konsistensi dari aplikasi
+ * jika suatu saat terjadi error / masalah pada aplikasi, pada saat unit test akan dikasih tahu posisi terjadinya kesalahan
+ */
+describe('addNumbers', () => {
+  it('adds two numbers', () => {
+    expect(addNumber(2, 2)).toEqual(4);
+  });
+});
+```
+
 ## Running the app
 
 ```bash
